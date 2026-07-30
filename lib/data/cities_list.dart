@@ -1,0 +1,122 @@
+import '../models/city.dart';
+
+final List<City> cities = [
+  // Africa
+  City(name: 'Lagos', country: 'Nigeria', timezone: 'Africa/Lagos'),
+  City(name: 'Abuja', country: 'Nigeria', timezone: 'Africa/Lagos'),
+  City(name: 'Nairobi', country: 'Kenya', timezone: 'Africa/Nairobi'),
+  City(name: 'Addis Ababa', country: 'Ethiopia', timezone: 'Africa/Nairobi'),
+  City(
+    name: 'Johannesburg',
+    country: 'South Africa',
+    timezone: 'Africa/Johannesburg',
+  ),
+  City(name: 'Accra', country: 'Ghana', timezone: 'Africa/Abidjan'),
+  City(name: 'Dakar', country: 'Senegal', timezone: 'Africa/Abidjan'),
+  City(name: 'Casablanca', country: 'Morocco', timezone: 'Africa/Casablanca'),
+  City(name: 'Algiers', country: 'Algeria', timezone: 'Africa/Algiers'),
+  City(name: 'Tunis', country: 'Tunisia', timezone: 'Africa/Tunis'),
+  City(name: 'Cairo', country: 'Egypt', timezone: 'Africa/Cairo'),
+  City(name: 'Kampala', country: 'Uganda', timezone: 'Africa/Nairobi'),
+  City(name: 'Dar es Salaam', country: 'Tanzania', timezone: 'Africa/Nairobi'),
+  City(name: 'Kinshasa', country: 'DR Congo', timezone: 'Africa/Lagos'),
+  City(name: 'Luanda', country: 'Angola', timezone: 'Africa/Lagos'),
+  City(name: 'Harare', country: 'Zimbabwe', timezone: 'Africa/Maputo'),
+
+  // Europe
+  City(name: 'London', country: 'UK', timezone: 'Europe/London'),
+  City(name: 'Dublin', country: 'Ireland', timezone: 'Europe/Dublin'),
+  City(name: 'Paris', country: 'France', timezone: 'Europe/Paris'),
+  City(name: 'Berlin', country: 'Germany', timezone: 'Europe/Berlin'),
+  City(name: 'Madrid', country: 'Spain', timezone: 'Europe/Madrid'),
+  City(name: 'Lisbon', country: 'Portugal', timezone: 'Europe/Lisbon'),
+  City(name: 'Rome', country: 'Italy', timezone: 'Europe/Rome'),
+  City(name: 'Amsterdam', country: 'Netherlands', timezone: 'Europe/Brussels'),
+  City(name: 'Brussels', country: 'Belgium', timezone: 'Europe/Brussels'),
+  City(name: 'Zurich', country: 'Switzerland', timezone: 'Europe/Zurich'),
+  City(name: 'Vienna', country: 'Austria', timezone: 'Europe/Vienna'),
+  City(name: 'Prague', country: 'Czech Republic', timezone: 'Europe/Prague'),
+  City(name: 'Budapest', country: 'Hungary', timezone: 'Europe/Budapest'),
+  City(name: 'Warsaw', country: 'Poland', timezone: 'Europe/Warsaw'),
+  City(name: 'Stockholm', country: 'Sweden', timezone: 'Europe/Berlin'),
+  City(name: 'Oslo', country: 'Norway', timezone: 'Europe/Berlin'),
+  City(name: 'Copenhagen', country: 'Denmark', timezone: 'Europe/Berlin'),
+  City(name: 'Reykjavik', country: 'Iceland', timezone: 'Africa/Abidjan'),
+  City(name: 'Athens', country: 'Greece', timezone: 'Europe/Athens'),
+  City(name: 'Sofia', country: 'Bulgaria', timezone: 'Europe/Sofia'),
+  City(name: 'Istanbul', country: 'Turkey', timezone: 'Europe/Istanbul'),
+  City(name: 'Moscow', country: 'Russia', timezone: 'Europe/Moscow'),
+
+  // Middle East
+  City(name: 'Dubai', country: 'UAE', timezone: 'Asia/Dubai'),
+  City(name: 'Riyadh', country: 'Saudi Arabia', timezone: 'Asia/Riyadh'),
+  City(name: 'Jeddah', country: 'Saudi Arabia', timezone: 'Asia/Riyadh'),
+  City(name: 'Doha', country: 'Qatar', timezone: 'Asia/Qatar'),
+  City(name: 'Baghdad', country: 'Iraq', timezone: 'Asia/Baghdad'),
+  City(name: 'Tehran', country: 'Iran', timezone: 'Asia/Tehran'),
+  City(name: 'Tel Aviv', country: 'Israel', timezone: 'Asia/Jerusalem'),
+
+  // South & Southeast Asia
+  City(name: 'Karachi', country: 'Pakistan', timezone: 'Asia/Karachi'),
+  City(name: 'Kabul', country: 'Afghanistan', timezone: 'Asia/Kabul'),
+  City(name: 'New Delhi', country: 'India', timezone: 'Asia/Kolkata'),
+  City(name: 'Mumbai', country: 'India', timezone: 'Asia/Kolkata'),
+  City(name: 'Kathmandu', country: 'Nepal', timezone: 'Asia/Kathmandu'),
+  City(name: 'Dhaka', country: 'Bangladesh', timezone: 'Asia/Dhaka'),
+  City(name: 'Colombo', country: 'Sri Lanka', timezone: 'Asia/Colombo'),
+  City(name: 'Yangon', country: 'Myanmar', timezone: 'Asia/Yangon'),
+  City(name: 'Bangkok', country: 'Thailand', timezone: 'Asia/Bangkok'),
+  City(name: 'Hanoi', country: 'Vietnam', timezone: 'Asia/Ho_Chi_Minh'),
+  City(name: 'Jakarta', country: 'Indonesia', timezone: 'Asia/Jakarta'),
+  City(name: 'Manila', country: 'Philippines', timezone: 'Asia/Manila'),
+  City(name: 'Kuala Lumpur', country: 'Malaysia', timezone: 'Asia/Singapore'),
+  City(name: 'Singapore', country: 'Singapore', timezone: 'Asia/Singapore'),
+
+  // East Asia
+  City(name: 'Hong Kong', country: 'China', timezone: 'Asia/Hong_Kong'),
+  City(name: 'Beijing', country: 'China', timezone: 'Asia/Shanghai'),
+  City(name: 'Taipei', country: 'Taiwan', timezone: 'Asia/Taipei'),
+  City(name: 'Seoul', country: 'South Korea', timezone: 'Asia/Seoul'),
+  City(name: 'Tokyo', country: 'Japan', timezone: 'Asia/Tokyo'),
+  City(name: 'Ulaanbaatar', country: 'Mongolia', timezone: 'Asia/Ulaanbaatar'),
+
+  // Oceania
+  City(name: 'Sydney', country: 'Australia', timezone: 'Australia/Sydney'),
+  City(
+    name: 'Melbourne',
+    country: 'Australia',
+    timezone: 'Australia/Melbourne',
+  ),
+  City(name: 'Perth', country: 'Australia', timezone: 'Australia/Perth'),
+  City(name: 'Auckland', country: 'New Zealand', timezone: 'Pacific/Auckland'),
+  City(name: 'Suva', country: 'Fiji', timezone: 'Pacific/Fiji'),
+
+  // North America
+  City(name: 'New York', country: 'USA', timezone: 'America/New_York'),
+  City(name: 'Chicago', country: 'USA', timezone: 'America/Chicago'),
+  City(name: 'Denver', country: 'USA', timezone: 'America/Denver'),
+  City(name: 'Los Angeles', country: 'USA', timezone: 'America/Los_Angeles'),
+  City(name: 'Anchorage', country: 'USA', timezone: 'America/Anchorage'),
+  City(name: 'Honolulu', country: 'USA', timezone: 'Pacific/Honolulu'),
+  City(name: 'Toronto', country: 'Canada', timezone: 'America/Toronto'),
+  City(name: 'Vancouver', country: 'Canada', timezone: 'America/Vancouver'),
+  City(name: 'Mexico City', country: 'Mexico', timezone: 'America/Mexico_City'),
+  City(name: 'Havana', country: 'Cuba', timezone: 'America/Havana'),
+
+  // South America
+  City(name: 'Bogotá', country: 'Colombia', timezone: 'America/Bogota'),
+  City(name: 'Caracas', country: 'Venezuela', timezone: 'America/Caracas'),
+  City(name: 'Lima', country: 'Peru', timezone: 'America/Lima'),
+  City(name: 'Santiago', country: 'Chile', timezone: 'America/Santiago'),
+  City(
+    name: 'Buenos Aires',
+    country: 'Argentina',
+    timezone: 'America/Argentina/Buenos_Aires',
+  ),
+  City(name: 'São Paulo', country: 'Brazil', timezone: 'America/Sao_Paulo'),
+  City(
+    name: 'Rio de Janeiro',
+    country: 'Brazil',
+    timezone: 'America/Sao_Paulo',
+  ),
+];
