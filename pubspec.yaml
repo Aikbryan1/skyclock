@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   intl: ^0.20.3
   timezone: ^0.11.1
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +34,6 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: assets/icon.png
+  web:
+    generate: true
+    image_path: assets/icon.png

@@ -5,7 +5,17 @@ import '../screens/detail_screen.dart';
 
 class CityCard extends StatelessWidget {
   final City city;
-  const CityCard({super.key, required this.city});
+  final bool use24Hour;
+  final bool isFavorite;
+  final VoidCallback onFavoriteToggle;
+
+  const CityCard({
+    super.key,
+    required this.city,
+    required this.use24Hour,
+    required this.isFavorite,
+    required this.onFavoriteToggle,
+  });
 
   String _imageFor(String period) {
     switch (period) {
@@ -24,7 +34,7 @@ class CityCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final hour = TimeHelper.getHour(city.timezone);
     final period = TimeHelper.getPeriod(hour);
-    final time = TimeHelper.getFormattedTime(city.timezone);
+    final time = TimeHelper.getFormattedTime(city.timezone, use24Hour: use24Hour);
 
     return GestureDetector(
       onTap: () {
@@ -36,8 +46,7 @@ class CityCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: Stack(
-          fit: StackFit
-              .expand, // forces every child below to fill the whole card
+          fit: StackFit.expand,
           children: [
             Image.asset(_imageFor(period), fit: BoxFit.cover),
             DecoratedBox(
@@ -51,6 +60,31 @@ class CityCard extends StatelessWidget {
                   ],
                   stops: const [0.5, 1.0],
                 ),
+              ),
+            ),
+            // Top-left: period label
+            Positioned(
+              top: 12,
+              left: 12,
+              child: Text(
+                period,
+                style: const TextStyle(
+                  fontSize: 13,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            // Top-right: favorite star
+            Positioned(
+              top: 4,
+              right: 4,
+              child: IconButton(
+                icon: Icon(
+                  isFavorite ? Icons.star : Icons.star_border,
+                  color: Colors.white,
+                ),
+                onPressed: onFavoriteToggle,
               ),
             ),
             Padding(
@@ -67,19 +101,9 @@ class CityCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    city.country,
-                    style: const TextStyle(fontSize: 12, color: Colors.white70),
-                  ),
+                  Text(city.country, style: const TextStyle(fontSize: 12, color: Colors.white70)),
                   const SizedBox(height: 8),
-                  Text(
-                    time,
-                    style: const TextStyle(fontSize: 22, color: Colors.white),
-                  ),
-                  Text(
-                    period,
-                    style: const TextStyle(fontSize: 12, color: Colors.white70),
-                  ),
+                  Text(time, style: const TextStyle(fontSize: 22, color: Colors.white)),
                 ],
               ),
             ),
