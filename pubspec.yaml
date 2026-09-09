@@ -19,21 +19,37 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^6.0.0
   flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.3
 
 flutter:
   uses-material-design: true
-  
+
   assets:
     - assets/morning.jpg
     - assets/afternoon.jpg
     - assets/evening.jpg
     - assets/night.jpg
-    - assets/icon.png
+    - assets/icon_light.png
+    - assets/icon_dark.png
+    - assets/splash_light.png
+    - assets/splash_dark.png
 
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: assets/icon.png
+  image_path: assets/icon_dark.png
   web:
     generate: true
-    image_path: assets/icon.png
+    image_path: assets/icon_dark.png
+
+flutter_native_splash:
+  color: "#ffffff"
+  image: assets/splash_light.png
+  color_dark: "#050710"
+  image_dark: assets/splash_dark.png
+  android_12:
+    image: assets/splash_light.png
+    color: "#ffffff"
+    image_dark: assets/splash_dark.png
+    color_dark: "#050710"
+  web: false

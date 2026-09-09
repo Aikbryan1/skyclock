@@ -49,7 +49,7 @@ flutter build web --release --base-href "/skyclock/"
 
 ## Project Structure
 
-```
+```text
 lib/
   main.dart              # App entry point, theme state
   models/city.dart        # City data shape
