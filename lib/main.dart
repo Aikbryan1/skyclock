@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
-import 'screens/home_screen.dart';
+import 'screens/splash_screen.dart';
+import 'utils/home_widget_helper.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // <-- THE FIX
   tzdata.initializeTimeZones();
+
+  await HomeWidgetHelper.ensureDefaultWidgetCity();
+
+  await HomeWidgetHelper.refreshOnAppOpen();
   runApp(const MyApp());
 }
 
@@ -17,7 +24,23 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.light;
 
-  void _toggleTheme(bool isDark) {
+  @override
+  void initState() {
+    super.initState();
+    _loadTheme();
+  }
+
+  Future<void> _loadTheme() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isDark = prefs.getBool('isDarkMode') ?? false;
+    setState(() {
+      _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
+    });
+  }
+
+  Future<void> _toggleTheme(bool isDark) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('isDarkMode', isDark);
     setState(() {
       _themeMode = isDark ? ThemeMode.dark : ThemeMode.light;
     });
@@ -30,7 +53,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(useMaterial3: true, brightness: Brightness.light),
       darkTheme: ThemeData(useMaterial3: true, brightness: Brightness.dark),
       themeMode: _themeMode,
-      home: HomeScreen(
+      home: SplashScreen(
         isDarkMode: _themeMode == ThemeMode.dark,
         onThemeChanged: _toggleTheme,
       ),

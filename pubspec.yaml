@@ -1,7 +1,7 @@
 name: skyclock
 description: A new Flutter project.
 publish_to: none
-version: 1.0.0+1
+version: 1.2.0+1
 
 environment:
   sdk: ^3.11.0
@@ -13,6 +13,7 @@ dependencies:
   intl: ^0.20.3
   timezone: ^0.11.1
   shared_preferences: ^2.5.5
+  home_widget: ^0.9.4
 
 dev_dependencies:
   flutter_test:
@@ -38,6 +39,8 @@ flutter_launcher_icons:
   android: true
   ios: true
   image_path: assets/icon_dark.png
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: assets/icon_dark.png
   web:
     generate: true
     image_path: assets/icon_dark.png
