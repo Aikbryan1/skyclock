@@ -6,6 +6,15 @@ import 'utils/home_widget_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // <-- THE FIX
+
+  // TEMP: catch startup errors so we can see them in the browser console
+  FlutterError.onError = (details) {
+    // ignore: avoid_print
+    print('FLUTTER ERROR: ${details.exceptionAsString()}');
+    // ignore: avoid_print
+    print('STACK: ${details.stack}');
+  };
+  
   tzdata.initializeTimeZones();
 
   await HomeWidgetHelper.ensureDefaultWidgetCity();
