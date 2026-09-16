@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'dart:io' show Platform;
 import 'package:home_widget/home_widget.dart';
 import 'time_helper.dart';
 import '../models/city.dart';
@@ -9,9 +11,16 @@ import '../data/cities_list.dart';
 class HomeWidgetHelper {
   static const String _androidWidgetName = 'SkyClockWidgetProvider';
 
+  /// Widgets only exist on Android and iOS. Skip everywhere else.
+  static bool get _isSupported {
+    if (kIsWeb) return false;
+    return Platform.isAndroid || Platform.isIOS;
+  }
+
   /// Call this once when the user picks a city to show on the widget
   /// (e.g. from a "Pin to widget" button on a CityCard).
   static Future<void> setWidgetCity(City city) async {
+    if (!_isSupported) return;
     await HomeWidget.saveWidgetData<String>('widget_city_key', city.timezone);
     await HomeWidget.saveWidgetData<String>(
       'widget_city_display_name',
@@ -23,6 +32,7 @@ class HomeWidgetHelper {
   /// Recalculates the time/period for the saved city and pushes it to
   /// the native widget. Safe to call often — cheap, local calculation only.
   static Future<void> _refreshWidgetDisplay() async {
+    if (!_isSupported) return;
     final timezone = await HomeWidget.getWidgetData<String>('widget_city_key');
     final displayName = await HomeWidget.getWidgetData<String>(
       'widget_city_display_name',
@@ -48,12 +58,14 @@ class HomeWidgetHelper {
   /// periodic update (set in skyclock_widget_info.xml) handles the
   /// rest while the app is closed.
   static Future<void> refreshOnAppOpen() async {
+    if (!_isSupported) return;
     await _refreshWidgetDisplay();
   }
 
   /// Ensures the widget has a default city set (user's device timezone,
   /// or Lagos as a final fallback) on first run.
   static Future<void> ensureDefaultWidgetCity() async {
+    if (!_isSupported) return;
     final existing = await HomeWidget.getWidgetData<String>('widget_city_key');
     if (existing != null && existing.isNotEmpty) return;
 
