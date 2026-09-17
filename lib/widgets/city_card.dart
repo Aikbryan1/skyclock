@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import '../models/city.dart';
 import '../utils/time_helper.dart';
 import '../utils/home_widget_helper.dart';
@@ -87,22 +88,23 @@ class CityCard extends StatelessWidget {
             onPressed: onFavoriteToggle,
           ),
         ),
-        Positioned(
-          top: 44,
-          right: 4,
-          child: IconButton(
-            icon: const Icon(Icons.widgets_outlined, color: Colors.white),
-            tooltip: "Set as home screen widget",
-            onPressed: () async {
-              await HomeWidgetHelper.setWidgetCity(city);
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("${city.name} pinned to widget")),
-                );
-              }
-            },
+        if (!kIsWeb)
+          Positioned(
+            top: 44,
+            right: 4,
+            child: IconButton(
+              icon: const Icon(Icons.widgets_outlined, color: Colors.white),
+              tooltip: "Set as home screen widget",
+              onPressed: () async {
+                await HomeWidgetHelper.setWidgetCity(city);
+                if (context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("${city.name} pinned to widget")),
+                  );
+                }
+              },
+            ),
           ),
-        ),
         Padding(
           padding: const EdgeInsets.all(12),
           child: Column(
@@ -196,28 +198,30 @@ class CityCard extends StatelessWidget {
                           padding: EdgeInsets.zero,
                           constraints: const BoxConstraints(),
                         ),
-                        const SizedBox(width: 8),
-                        IconButton(
-                          icon: const Icon(
-                            Icons.widgets_outlined,
-                            color: Colors.white,
-                            size: 20,
-                          ),
-                          onPressed: () async {
-                            await HomeWidgetHelper.setWidgetCity(city);
-                            if (context.mounted) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(
-                                    "${city.name} pinned to widget",
+                        if (!kIsWeb) ...[
+                          const SizedBox(width: 8),
+                          IconButton(
+                            icon: const Icon(
+                              Icons.widgets_outlined,
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            onPressed: () async {
+                              await HomeWidgetHelper.setWidgetCity(city);
+                              if (context.mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text(
+                                      "${city.name} pinned to widget",
+                                    ),
                                   ),
-                                ),
-                              );
-                            }
-                          },
-                          padding: EdgeInsets.zero,
-                          constraints: const BoxConstraints(),
-                        ),
+                                );
+                              }
+                            },
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ],
                       ],
                     ),
                   ],

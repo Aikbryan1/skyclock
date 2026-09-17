@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../data/cities_list.dart';
 import '../models/city.dart';
@@ -61,13 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
         context: context,
         builder: (context) => AlertDialog(
           title: const Text("Welcome to Sky Clock"),
-          content: const Text(
-            "Each city's background reflects the time of day there right now "
-            "— morning, afternoon, evening, or night. It's based on local "
-            "time, not live weather, so a sunny image can still show up "
-            "even if it's actually raining there.\n\n"
-            "Tap the ⭐ to favorite a city (it moves to the top), or the "
-            "widget icon to pin it to your home screen.",
+          content: Text(
+            "Each city's background reflects the time of day there right now — morning, afternoon, evening, or night. It's based on local time, not live weather, so a sunny image can still show up even if it's actually raining there.\n\nTap the ⭐ to favorite a city (it moves to the top)${kIsWeb ? "." : ", or the widget icon to pin it to your home screen."}",
           ),
           actions: [
             TextButton(
